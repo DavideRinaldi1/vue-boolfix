@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1E2D3B;
+    min-height: 100vh;
+}
+
+.container {
+    width: 1070px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container input{
+    height: 35px;
+    border-radius: 10px;
+    width: 200px;
+}
+.menu-dx button{
+    font-size: 1.1rem;
+    color: #f71a0c;
+    margin-left: 20px;
+    background-color: rgb(46, 58, 70);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+header {
+    width: 100%;
+    height: 70px;
+    background: rgb(46, 58, 70);
+}
+
+header img {
+    height: 50px;
+}
+
+.film-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 0 100px 0;
+}
+
+.card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: 200px;
+    padding: 20px;
+    margin: 10px 20px;
+    height: 360px;
+    background: rgb(46, 58, 70);
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.card h3 {
+    margin: 20px 0;
+    color: white;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.card span.author {
+    color: grey;
+    font-size: 20px;
+}
+
+.card span.year {
+    color: grey;
+}
+.select_container{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 150px;
+}
+
+select{
+    background-color: #1E2D3B;
+    color: white;
+    width: 100px;
+    font-family: 'lato', sans-serif;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
