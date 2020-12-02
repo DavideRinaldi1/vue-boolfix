@@ -19,19 +19,25 @@
                 <div class="container">
                     <img src="logo.png" alt="logo" />
                     <div class="menu-dx">
-                        <input type="text" placeholder="Cerca..." v-model="searchInput">
+                        <input 
+                        type="text" 
+                        placeholder="Cerca..." 
+                        v-model="searchInput"
+                        @keydown.13="searchFilm">
                         <button @click="searchFilm">CERCA</button>
                     </div>
                 </div>
             </header>
             <div class="film-container container">
-                <!-- Disco ad esempio -->
-                <div class="card">
-                    <img src="" alt="poster film">
-                    <h3></h3>
-                    <span class="author"></span>
-                    <span class="year"></span>
-                </div>
+                <template v-for="film in movie">
+                    <div class="card">
+                        <img :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
+                        <h3>{{film.title}}</h3>
+                        <h4>{{film.original_title}}</h4>
+                        <span class="lang">Language: {{film.original_language}}</span>
+                        <span class="rate">Rate: {{film.vote_average}}</span>
+                    </div>
+                </template>
             </div>
         </div>
 

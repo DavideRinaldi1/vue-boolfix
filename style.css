@@ -6,12 +6,12 @@
 }
 
 body {
-    background: #1E2D3B;
+    background: #141414;
     min-height: 100vh;
 }
 
 .container {
-    width: 1070px;
+    width: 1400px;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -28,7 +28,7 @@ body {
     font-size: 1.1rem;
     color: #f71a0c;
     margin-left: 20px;
-    background-color: rgb(46, 58, 70);
+    background-color: #0d0d0d;
     border: none;
     font-weight: 600;
     cursor: pointer;
@@ -38,11 +38,11 @@ body {
 header {
     width: 100%;
     height: 70px;
-    background: rgb(46, 58, 70);
+    background: #0d0d0d;
 }
 
 header img {
-    height: 50px;
+    height: 75px;
 }
 
 .film-container {
@@ -61,8 +61,8 @@ header img {
     flex-basis: 200px;
     padding: 20px;
     margin: 10px 20px;
-    height: 360px;
-    background: rgb(46, 58, 70);
+    height: 450px;
+    background: #0d0d0d;
     text-align: center;
 }
 
@@ -71,20 +71,25 @@ header img {
 }
 
 .card h3 {
-    margin: 20px 0;
+    margin-top: 20px;
     color: white;
-    font-size: 22px;
+    font-size: 15px;
     text-transform: uppercase;
 }
 
-.card span.author {
-    color: grey;
-    font-size: 20px;
+.card h4{
+    margin-top: 20px;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
-.card span.year {
-    color: grey;
+.lang, .rate {
+    color: white;
+    font-size: 12px;
+    margin-top: 20px;
 }
+
 .select_container{
  display: flex;
  justify-content: center;
