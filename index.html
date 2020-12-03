@@ -11,18 +11,20 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <!-- axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     </head>
     <body>
         <div id="root">
             <header>
                 <div class="container">
-                    <img src="logo.png" alt="logo" />
+                    <img src="img/logo.png" alt="logo" />
                     <div class="menu-dx">
                         <input 
                         type="text" 
                         placeholder="Cerca..." 
                         v-model="searchInput"
-                        @keydown.13="searchFilm">
+                        @keydown.enter="searchFilm">
                         <button @click="searchFilm">CERCA</button>
                     </div>
                 </div>
@@ -30,11 +32,15 @@
             <div class="film-container container">
                 <template v-for="film in movie">
                     <div class="card">
-                        <img :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
+                        <img @error="posterNotFound" :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
                         <h3>{{film.title}}</h3>
                         <h4>{{film.original_title}}</h4>
-                        <span class="lang">Language: {{film.original_language}}</span>
-                        <span class="rate">Rate: {{film.vote_average}}</span>
+                        <span class="lang"><img @error="flagDefault" :src="'img/' + film.original_language + '.png'" alt="Lingua"></span>
+                        <ul class="rate">
+                            <li v-for="vote in starsvote(film.vote_average)">
+                                <i class="fas fa-star"></i>
+                            </li>
+                        </ul>
                     </div>
                 </template>
             </div>

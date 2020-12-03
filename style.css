@@ -85,9 +85,18 @@ header img {
     text-transform: uppercase;
 }
 
-.lang, .rate {
+.lang {
     color: white;
     font-size: 12px;
     margin-top: 20px;
 }
 
+.rate{
+    margin-top: 20px;
+}
+
+.rate li{
+    color: yellow;
+    display: inline;
+    list-style: none;
+}
