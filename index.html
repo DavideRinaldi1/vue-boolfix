@@ -30,15 +30,19 @@
                 </div>
             </header>
             <div class="film-container container">
-                <template v-for="film in movie">
+                <template v-for="film in movies">
                     <div class="card">
-                        <img @error="posterNotFound" :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
-                        <h3>{{film.title}}</h3>
-                        <h4>{{film.original_title}}</h4>
+                        <img v-if="film.poster_path" :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
+                        <img v-else src="img/notAvailable.png" alt="">
+                        <h3 v-if="film.title">{{film.title}}</h3>
+                        <h3 v-if="film.name">{{film.name}}</h3>
+                        <h4 v-if="film.original_title">{{film.original_title}}</h4>
+                        <h4 v-if="film.original_name">{{film.original_name}}</h4>
                         <span class="lang"><img @error="flagDefault" :src="'img/' + film.original_language + '.png'" alt="Lingua"></span>
                         <ul class="rate">
-                            <li v-for="vote in starsvote(film.vote_average)">
-                                <i class="fas fa-star"></i>
+                            <li>
+                                <i v-for="vote in starsvote(film.vote_average)" class="fas fa-star"></i>
+                                <i v-for="el in (5 - starsvote(film.vote_average))" class="fas fa-star" id="notVoted"></i>
                             </li>
                         </ul>
                     </div>

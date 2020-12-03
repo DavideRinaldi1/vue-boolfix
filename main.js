@@ -4,22 +4,35 @@ const divider_rating = 2
 const myApp = new Vue({
 	el: "#root",
 	data: {
-        searchInput: '',
-        movie: [],
+        searchInput: 'scrubs',
+        movies: [],
 	},
 	methods:{
         searchFilm: function() {
+            this.movies = []
             console.log(this.searchInput)
             axios
-                .get('https://api.themoviedb.org/3/search/multi',{
+                .get('https://api.themoviedb.org/3/search/movie',{
                     params: {
                         'api_key': api_key,
                         query: this.searchInput,
                         language: 'it-IT',
                     }
                 })
-                .then((r) => {this.movie = r.data.results})
+                .then((r) => {this.movies = this.movies.concat(r.data.results)})
+                .catch((e) => console.log(e))
                 .finally(() => this.searchInput = '')
+            axios
+            .get('https://api.themoviedb.org/3/search/tv',{
+                params: {
+                    'api_key': api_key,
+                    query: this.searchInput,
+                    language: 'it-IT',
+                }
+            })
+            .then((r) => {this.movies = this.movies.concat(r.data.results)})
+            .catch((e) => console.log(e))
+            .finally(() => this.searchInput = '')
         },
         starsvote: 
         (vote) => {
@@ -28,10 +41,6 @@ const myApp = new Vue({
         flagDefault: 
         (el) => {
             return el.target.src = 'img/page-not-found.png';
-        },
-        posterNotFound: 
-        (el) => {
-            return el.target.scr = 'img/notAvailable.png';
         }
 	},
 	
