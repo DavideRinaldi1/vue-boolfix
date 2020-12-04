@@ -6,7 +6,8 @@ const myApp = new Vue({
 	data: {
         searchInput: '',
         movies: [],
-        currentPage: 1
+        currentPage: 1,
+        totalPage: 0
     },
     mounted(){
         axios
@@ -16,7 +17,9 @@ const myApp = new Vue({
                     language: 'it_IT'
                 }
             })
-            .then((r) => {this.movies = r.data.results})
+            .then((r) => {
+                this.movies = r.data.results
+            })
     },
 	methods:{
         searchFilm: function() {
@@ -31,7 +34,10 @@ const myApp = new Vue({
                         page: this.currentPage,
                     }
                 })
-                .then((r) => {this.movies = this.movies.concat(r.data.results)})
+                .then((r) => {
+                    this.movies = this.movies.concat(r.data.results)
+                    this.totalPage = r.data.total_pages
+                })
                 .catch((e) => console.log(e))
                 .finally(() => this.searchInput = '')
             axios
@@ -43,7 +49,10 @@ const myApp = new Vue({
                     page: this.currentPage,
                 }
             })
-            .then((r) => {this.movies = this.movies.concat(r.data.results)})
+            .then((r) => {
+                this.movies = this.movies.concat(r.data.results)
+                this.totalPage = r.data.total_pages
+            })
             .catch((e) => console.log(e))
             .finally(() => this.searchInput = '')
         },
@@ -54,7 +63,22 @@ const myApp = new Vue({
         flagDefault: 
         (el) => {
             return el.target.src = 'img/page-not-found.png';
-        }
+        },
+        nextPage:
+        () => {
+            this.currentPage++
+            this.searchFilm
+        },
+        prevPage:
+        () => {
+            this.currentPage--
+            this.searchFilm
+        },
+        changePage:
+        function(index) {
+            this.currentPage = index
+            this.searchFilm
+        },
 	},
 	
 

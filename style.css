@@ -158,3 +158,26 @@ header img {
     margin-top: 20px;
 }
 
+.selectPage{
+    max-width: 800px;
+    margin-bottom: 50px;
+}
+
+.selectPage i{
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.boxpage{
+    color: white;
+    background-color: #e50a14;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

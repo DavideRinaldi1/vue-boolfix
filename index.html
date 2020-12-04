@@ -55,6 +55,15 @@
                     </div>
                 </template>
             </div>
+            <div class="container selectPage">
+                <i @click="prevPage" class="fas fa-arrow-left"></i>
+                <template v-for="(el, i) in totalPage">
+                    <div @click="changePage(el)" class="boxpage">
+                        {{el}}
+                    </div>
+                </template>
+                <i @click="nextPage" class="fas fa-arrow-right"></i>
+            </div>
         </div>
 
         <script src="main.js" charset="utf-8"></script>
