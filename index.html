@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="header_logo.png" type="image/png">
         <title>Boolfix</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -57,9 +58,9 @@
             </div>
             <div class="container selectPage">
                 <i @click="prevPage" class="fas fa-arrow-left"></i>
-                <template v-for="(el, i) in totalPage">
-                    <div @click="changePage(el)" class="boxpage">
-                        {{el}}
+                <template v-for="(el, i) in 10">
+                    <div @click="changePage(el+currentPage)" class="boxpage">
+                        {{el+currentPage}}
                     </div>
                 </template>
                 <i @click="nextPage" class="fas fa-arrow-right"></i>

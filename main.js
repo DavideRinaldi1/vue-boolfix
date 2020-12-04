@@ -7,7 +7,8 @@ const myApp = new Vue({
         searchInput: '',
         movies: [],
         currentPage: 1,
-        totalPage: 0
+        totalPage: 0,
+        currentSearch: ''
     },
     mounted(){
         axios
@@ -19,11 +20,19 @@ const myApp = new Vue({
             })
             .then((r) => {
                 this.movies = r.data.results
+                this.totalPage = r.data.total_pages
             })
     },
 	methods:{
         searchFilm: function() {
             this.movies = []
+            
+            if (this.currentSearch != this.searchInput) {
+                this.currentPage = 1;
+            }
+            
+            this.currentSearch = this.searchInput
+
             console.log(this.searchInput)
             axios
                 .get('https://api.themoviedb.org/3/search/movie',{
@@ -39,7 +48,6 @@ const myApp = new Vue({
                     this.totalPage = r.data.total_pages
                 })
                 .catch((e) => console.log(e))
-                .finally(() => this.searchInput = '')
             axios
             .get('https://api.themoviedb.org/3/search/tv',{
                 params: {
@@ -54,7 +62,6 @@ const myApp = new Vue({
                 this.totalPage = r.data.total_pages
             })
             .catch((e) => console.log(e))
-            .finally(() => this.searchInput = '')
         },
         starsvote: 
         (vote) => {
@@ -65,19 +72,19 @@ const myApp = new Vue({
             return el.target.src = 'img/page-not-found.png';
         },
         nextPage:
-        () => {
+        function(){
             this.currentPage++
-            this.searchFilm
+            this.searchFilm()
         },
         prevPage:
-        () => {
+        function(){
             this.currentPage--
-            this.searchFilm
+            this.searchFilm()
         },
         changePage:
         function(index) {
             this.currentPage = index
-            this.searchFilm
+            this.searchFilm()
         },
 	},
 	
