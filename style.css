@@ -10,8 +10,9 @@ body {
     min-height: 100vh;
 }
 
+
 .container {
-    width: 1400px;
+    max-width: 1300px;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -21,25 +22,39 @@ body {
 
 .container input{
     height: 35px;
-    border-radius: 10px;
-    width: 200px;
+    width: 250px;
+    border: none;
+    border-bottom: 2px solid #e50a14;
+    background-color: #0d0d0d;
+    color: white;
 }
+
+.menu-dx{
+    color: white;
+}
+
+.menu-dx i{
+    cursor: pointer;
+    margin: 0 15px;
+    font-size: 1.2rem;
+}
+
 .menu-dx button{
-    font-size: 1.1rem;
-    color: #f71a0c;
-    margin-left: 20px;
+    font-size: 1.2rem;
+    color: white;
+    margin-left: 10px;
     background-color: #0d0d0d;
     border: none;
-    font-weight: 600;
     cursor: pointer;
     letter-spacing: 1px;
 }
-
 
 header {
     width: 100%;
     height: 70px;
     background: #0d0d0d;
+    position: fixed;
+    z-index: 1;
 }
 
 header img {
@@ -51,7 +66,8 @@ header img {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0 0 100px 0;
+    padding: 100px 0 100px 0;
+    
 }
 
 .card {
@@ -59,35 +75,36 @@ header img {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    flex-basis: 200px;
-    padding: 20px;
+    flex-basis: 250px;
     margin: 10px 20px;
-    height: 450px;
-    background: #0d0d0d;
     text-align: center;
+}
+
+.overlay_card{
+    width: 100%;
+    height: 100%;
 }
 
 .card img {
     max-width: 100%;
+
 }
 
-.card h3 {
+.overlay_card h3 {
     margin-top: 20px;
     color: white;
     font-size: 15px;
     text-transform: uppercase;
 }
 
-.card h4{
+.overlay_card h4{
     margin-top: 20px;
     color: white;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-.lang {
-    color: white;
-    font-size: 12px;
+.lang img {
     margin-top: 20px;
 }
 
@@ -104,3 +121,40 @@ header img {
 #notVoted{
     color: gray;
 }
+
+.p-relative{
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 100%;
+     width: 100%;
+     background-color: #141414;
+     opacity: 0;
+     cursor: pointer;
+     overflow-y: scroll;
+     overflow-x: hidden;
+     -ms-overflow-style: none;
+     scrollbar-width: none;
+     text-align: left;
+     padding: 15px;
+}
+
+.overlay::-webkit-scrollbar {
+    display: none;
+}
+
+.overlay:hover{
+    opacity: 0.9;
+}
+
+.overview{
+    color: white;
+    margin-top: 20px;
+}
+

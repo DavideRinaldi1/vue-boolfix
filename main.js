@@ -4,9 +4,20 @@ const divider_rating = 2
 const myApp = new Vue({
 	el: "#root",
 	data: {
-        searchInput: 'scrubs',
+        searchInput: '',
         movies: [],
-	},
+        currentPage: 1
+    },
+    mounted(){
+        axios
+            .get('https://api.themoviedb.org/3/trending/all/week',{
+                params: {
+                    'api_key': api_key,
+                    language: 'it_IT'
+                }
+            })
+            .then((r) => {this.movies = r.data.results})
+    },
 	methods:{
         searchFilm: function() {
             this.movies = []
@@ -17,6 +28,7 @@ const myApp = new Vue({
                         'api_key': api_key,
                         query: this.searchInput,
                         language: 'it-IT',
+                        page: this.currentPage,
                     }
                 })
                 .then((r) => {this.movies = this.movies.concat(r.data.results)})
@@ -28,6 +40,7 @@ const myApp = new Vue({
                     'api_key': api_key,
                     query: this.searchInput,
                     language: 'it-IT',
+                    page: this.currentPage,
                 }
             })
             .then((r) => {this.movies = this.movies.concat(r.data.results)})

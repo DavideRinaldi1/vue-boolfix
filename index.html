@@ -22,29 +22,36 @@
                     <div class="menu-dx">
                         <input 
                         type="text" 
-                        placeholder="Cerca..." 
                         v-model="searchInput"
                         @keydown.enter="searchFilm">
-                        <button @click="searchFilm">CERCA</button>
+                        <button @click="searchFilm"><i class="fas fa-search"></i></button>
+                        <i class="fas fa-gift"></i>
+                        <span>BAMBINI</span>
+                        <i class="fas fa-bell"></i>
                     </div>
                 </div>
             </header>
             <div class="film-container container">
                 <template v-for="film in movies">
-                    <div class="card">
+                    <div class="card p-relative">
                         <img v-if="film.poster_path" :src="'https://image.tmdb.org/t/p/w500/' + film.poster_path" alt="poster film">
                         <img v-else src="img/notAvailable.png" alt="">
-                        <h3 v-if="film.title">{{film.title}}</h3>
-                        <h3 v-if="film.name">{{film.name}}</h3>
-                        <h4 v-if="film.original_title">{{film.original_title}}</h4>
-                        <h4 v-if="film.original_name">{{film.original_name}}</h4>
-                        <span class="lang"><img @error="flagDefault" :src="'img/' + film.original_language + '.png'" alt="Lingua"></span>
-                        <ul class="rate">
-                            <li>
-                                <i v-for="vote in starsvote(film.vote_average)" class="fas fa-star"></i>
-                                <i v-for="el in (5 - starsvote(film.vote_average))" class="fas fa-star" id="notVoted"></i>
-                            </li>
-                        </ul>
+                        <div class="overlay">
+                            <div class="overlay_card">
+                                <h3 v-if="film.title">Titolo: {{film.title}}</h3>
+                                <h3 v-if="film.name">Titolo: {{film.name}}</h3>
+                                <h4 v-if="film.original_title">Titolo originale: {{film.original_title}}</h4>
+                                <h4 v-if="film.original_name">Titolo originale: {{film.original_name}}</h4>
+                                <div class="overview">{{film.overview}}</div>
+                                <span class="lang"><img @error="flagDefault" :src="'img/' + film.original_language + '.png'" alt="Lingua"></span>
+                                <ul class="rate">
+                                    <li>
+                                        <i v-for="vote in starsvote(film.vote_average)" class="fas fa-star"></i>
+                                        <i v-for="el in (5 - starsvote(film.vote_average))" class="fas fa-star" id="notVoted"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>    
                     </div>
                 </template>
             </div>
