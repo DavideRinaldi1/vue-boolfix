@@ -151,6 +151,7 @@ header img {
 
 .overlay:hover{
     opacity: 0.9;
+    transition: 0.3s;
 }
 
 .overview{

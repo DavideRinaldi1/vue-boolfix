@@ -58,7 +58,7 @@
             </div>
             <div class="container selectPage">
                 <i @click="prevPage" class="fas fa-arrow-left"></i>
-                <template v-for="(el, i) in 10">
+                <template class="truncate" v-for="(el, i) in numPages()">
                     <div @click="changePage(el+currentPage)" class="boxpage">
                         {{el+currentPage}}
                     </div>

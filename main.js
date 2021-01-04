@@ -1,5 +1,6 @@
 const api_key = '7ba085c4229baa855e3ee88a6b076287';
-const divider_rating = 2
+const divider_rating = 2;
+const maxButtonPages = 10;
 
 const myApp = new Vue({
 	el: "#root",
@@ -8,7 +9,7 @@ const myApp = new Vue({
         movies: [],
         currentPage: 1,
         totalPage: 0,
-        currentSearch: ''
+        currentSearch: '',
     },
     mounted(){
         axios
@@ -86,6 +87,14 @@ const myApp = new Vue({
             this.currentPage = index
             this.searchFilm()
         },
+        numPages:
+        function(){
+            if(this.totalPage <= maxButtonPages){
+                return this.totalPage
+            }else{
+                return maxButtonPages
+            }
+        }
 	},
 	
 
